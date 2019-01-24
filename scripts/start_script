@@ -2,12 +2,12 @@
 
 echo start_script start >> /home/ec2-user/raspberry_pi.log
 
-python3 /home/ec2-user/raspberry_pi/main.py
+python3 /home/ec2-user/raspberry_pi/main.py >> /home/ec2-user/raspberry_pi.log
 
 file_name=/home/ec2-user/writed_main.txt
 
-echo scp start >> /home/ec2-user/raspberry_pi.log
 if [ -f ${file_name} ]; then
+echo scp start >> /home/ec2-user/raspberry_pi.log
 expect <<EOF
         spawn scp -o StrictHostKeyChecking=no -P 8001 -r /home/ec2-user/raspberry_pi pi@123.108.166.38:/home/pi/
         expect "password:"
@@ -28,5 +28,5 @@ EOF
 echo ssh done >> /home/ec2-user/raspberry_pi.log
 
 else
-        echo "file not exist"
+        echo file not exist >> /home/ec2-user/raspberry_pi.log
 fi
