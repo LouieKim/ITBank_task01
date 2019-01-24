@@ -3,7 +3,7 @@ import datetime
 if __name__ == "__main__":
     # writedata.py
     print("write txt")
-    f = open("writed_main.txt", 'w')
+    f = open("/home/ec2-user/writed_main.txt", 'w')
 
     f.write(str(datetime.datetime.now()))
     f.close()
