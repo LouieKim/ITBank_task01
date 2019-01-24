@@ -1,11 +1,13 @@
 #!/bin/bash
-echo Hello
+
+echo start_script start >> /home/ec2-user/raspberry_pi.log
+
 python3 /home/ec2-user/raspberry_pi/main.py
 
 file_name=/home/ec2-user/writed_main.txt
 
+echo scp start >> /home/ec2-user/raspberry_pi.log
 if [ -f ${file_name} ]; then
-echo "file exist"
 expect <<EOF
         spawn scp -o StrictHostKeyChecking=no -P 8001 -r /home/ec2-user/raspberry_pi pi@123.108.166.38:/home/pi/
         expect "password:"
@@ -13,7 +15,8 @@ expect <<EOF
         expect eof
 EOF
 
-echo "complete sending file"
+echo scp done >> /home/ec2-user/raspberry_pi.log
+echo ssh start >> /home/ec2-user/raspberry_pi.log
 
 expect <<EOF
         spawn ssh pi@123.108.166.38 -p 8001 python3 /home/pi/raspberry_pi/main.py
@@ -22,7 +25,7 @@ expect <<EOF
         expect eof
 EOF
 
-echo "complete excuted main file"
+echo ssh done >> /home/ec2-user/raspberry_pi.log
 
 else
         echo "file not exist"
