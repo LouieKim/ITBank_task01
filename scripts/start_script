@@ -1,3 +1,29 @@
 #!/bin/bash
 echo Hello
-python3 /home/ec2-user/main.py
+python3 /home/ec2-user/raspberry_pi/main.py
+
+file_name=/home/ec2-user/writed_main.txt
+
+if [ -f ${file_name} ]; then
+echo "file exist"
+expect <<EOF
+        spawn scp -o StrictHostKeyChecking=no -P 8001 -r /home/ec2-user/raspberry_pi pi@123.108.166.38:/home/pi/
+        expect "password:"
+        send "raspberry\r";
+        expect eof
+EOF
+
+echo "complete sending file"
+
+expect <<EOF
+        spawn ssh pi@123.108.166.38 -p 8001 python3 /home/pi/raspberry_pi/main.py
+        expect "password:"
+        send "raspberry\r";
+        expect eof
+EOF
+
+echo "complete excuted main file"
+
+else
+        echo "file not exist"
+fi
