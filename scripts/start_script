@@ -2,7 +2,7 @@
 
 echo start_script start >> /home/ec2-user/raspberry_pi.log
 
-python3 /home/ec2-user/raspberry_pi/main.py >> /home/ec2-user/raspberry_pi.log
+python3 /home/ec2-user/raspberry_pi/main.py
 
 file_name=/home/ec2-user/writed_main.txt
 
