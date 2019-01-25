@@ -19,7 +19,7 @@ echo scp done >> /home/ec2-user/raspberry_pi.log
 echo ssh start >> /home/ec2-user/raspberry_pi.log
 
 expect <<EOF
-        spawn ssh pi@123.108.166.38 -p 8001 python3 /home/pi/raspberry_pi/main.py
+        spawn ssh pi@123.108.166.38 -p 8001 python3 /home/pi/raspberry_pi/insert_search.py
         expect "password:"
         send "raspberry\r";
         expect eof
