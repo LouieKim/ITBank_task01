@@ -15,7 +15,6 @@ if __name__ == "__main__":
     logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%y %I:%M:%S %p', filename=log_file_path, level=logging.DEBUG)
     logging.info('Make write main file')
     current_id = str(getpass.getuser())
-    file_path = "/home/" + current_id + "/writed_main.txt"
     f = open(file_path, 'w')
     f.write(str(datetime.datetime.now()))
     f.close()
