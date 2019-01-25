@@ -6,8 +6,8 @@ import logging
 if __name__ == "__main__":
     # writedata.py
     current_id = str(getpass.getuser())
-    log_file_path = "/home/ec2-users/python_main.log"
-    file_path = "/home/ec2-users/writed_main.txt"
+    log_file_path = "/home/ec2-user/python_main.log"
+    file_path = "/home/ec2-user/writed_main.txt"
 
     #log_file_path = "/home/" + current_id + "python_main.log"
     #file_path = "/home/" + current_id + "/writed_main.txt"
